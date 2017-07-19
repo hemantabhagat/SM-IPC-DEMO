@@ -1,0 +1,21 @@
+SET(RUNNER_EXE_NAME processExecutor)
+
+ADD_EXECUTABLE(${RUNNER_EXE_NAME} "")
+
+
+INCLUDE_DIRECTORIES(${CMAKE_SOURCE_DIR}/tiny-process-library-master)
+
+if(WIN32)
+TARGET_LINK_LIBRARIES(${RUNNER_EXE_NAME} ${EXECUTABLE_OUTPUT_PATH}/$(CONFIGURATION)/tiny-process-library.lib)
+endif(WIN32)
+
+if(UNIX)
+TARGET_LINK_LIBRARIES(${RUNNER_EXE_NAME} ${EXECUTABLE_OUTPUT_PATH}/libtiny-process-library.a)
+TARGET_LINK_LIBRARIES(${RUNNER_EXE_NAME} rt)
+TARGET_LINK_LIBRARIES(${RUNNER_EXE_NAME} pthread)
+endif(UNIX)
+
+target_sources(${RUNNER_EXE_NAME}
+    PRIVATE
+        src/runner.cpp
+)
