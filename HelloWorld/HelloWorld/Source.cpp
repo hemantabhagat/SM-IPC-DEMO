@@ -74,8 +74,3 @@ int main(int argc, char **argv) {
 	std::cout << "################################################\n";
 	return 0;
 }
-
-
-int dummy_function(){
-	return 0;
-}
